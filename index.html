@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>وسام المثابرة - نسخة عبارات عشوائية</title>
+  <style>
+    body {
+      background-color: #e6f5e4;
+      font-family: 'Cairo', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .input-container {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: 2px solid #4caf50;
+      width: 300px;
+      direction: rtl;
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .card {
+      width: 420px;
+      padding: 30px;
+      border-radius: 20px;
+      background: linear-gradient(to bottom right, #d4edda, #b2dfdb);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border: 3px dashed #2e7d32;
+      position: relative;
+      display: none;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .card::before {
+      content: '';
+      background-image: url('https://www.transparenttextures.com/patterns/green-gobbler.png');
+      opacity: 0.12;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      color: #1b5e20;
+    }
+
+    .card-content h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .card-content p {
+      font-size: 19px;
+      margin-top: 12px;
+      line-height: 1.4;
+    }
+
+    .username {
+      font-weight: bold;
+      font-size: 24px;
+      color: #004d40;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="input-container">
+    <label for="nameInput">اكتب اسمك عشان يزين الكرت ✨</label><br /><br />
+    <input type="text" id="nameInput" placeholder="مثال: نانا" autocomplete="off" />
+    <br />
+    <button onclick="generateCard()">عرض الوسام</button>
+  </div>
+
+  <div class="card" id="card">
+    <div class="card-content">
+      <h2>🌿 وسام المثابرة</h2>
+      <p>بكل فخر، يُهدى هذا الوسام إلى:</p>
+      <p class="username" id="username"></p>
+      <p id="motivation"></p>
+    </div>
+  </div>
+
+  <script>
+    const phrases = [
+      "ثبت وما هان 🌱",
+      "كان له مع كل يوم حكاية عزيمة 🌞",
+      "المثابرة صديقك الدائم، وها أنت تزهر!",
+      "اللي صبر، فاز.. وهاك الوسام يا كفو 💪",
+      "ثلاثين يوم؟ ما تكفيك 👀👏",
+      "عزيمتك تشرق كالشمس بعد العاصفة ☀️",
+      "بالصبر والصمود يُكتب لك المجد 💫",
+      "الجهد اليوم، ثمرة الغد 🌿",
+      "نجمك العالي يلمع في سماء الإنجاز ✨",
+      "كل تحدي هو خطوة نحو النجاح 🎯"
+    ];
+
+    function generateCard() {
+      const name = document.getElementById('nameInput').value.trim();
+      if (!name) {
+        alert('عشان أزين الكرت، اكتب اسمك أولاً 😌');
+        return;
+      }
+      const randomIndex = Math.floor(Math.random() * phrases.length);
+      document.getElementById('username').textContent = name;
+      document.getElementById('motivation').textContent = phrases[randomIndex];
+      document.getElementById('card').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
